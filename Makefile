@@ -3,9 +3,11 @@ install:
 brain-games:
 		php bin/brain-games
 brain-even:
-		php src/Games/brain-even
+		php bin/brain-even
 brain-calc:
-		php src/Games/brain-calc
+		php bin/brain-calc
+brain-gcd:
+		php bin/brain-gcd
 vaildate:
 		composer vaildate
 lint:
