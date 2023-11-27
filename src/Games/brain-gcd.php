@@ -28,7 +28,6 @@ function getCorrectAnswer(int $num1, int $num2): int
 verbose('Find the greatest common divisor of given numbers.');
 
 for ($i = 0; $i < 3; $i++) {
-
     $num1 = rand(0, 99);
     $num2 = rand(0, 99);
 

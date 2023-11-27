@@ -22,7 +22,6 @@ function getCorrectAnswer(int $num): string
 verbose('Answer "yes" if the number is even, otherwise answer "no".');
 
 for ($i = 0; $i < 3; $i++) {
-
     $num = rand(0, 99);
 
     askQuestion("{$num}");

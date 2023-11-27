@@ -10,7 +10,6 @@ use function BrainGames\engine\wrongAnswer;
 verbose('What number is missing in the progression?');
 
 for ($i = 0; $i < 3; $i++) {
-
     $startnum = rand(0, 99);
     $iteration = rand(1, 10);
     $lengthprog = rand(5, 10);

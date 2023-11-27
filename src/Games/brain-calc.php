@@ -26,7 +26,6 @@ $actions = ['+', '-', '*'];
 verbose('What is the result of the expression?');
 
 for ($i = 0; $i < 3; $i++) {
-
     $num1 = rand(0, 99);
     $num2 = rand(0, 99);
     $action = $actions[array_rand($actions)];
