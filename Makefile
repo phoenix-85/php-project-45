@@ -12,7 +12,7 @@ brain-progression:
 		php bin/brain-progression
 brain-prime:
 		php bin/brain-prime
-vaildate:
-		composer vaildate
+validate:
+		composer validate
 lint:
 		composer exec --verbose phpcs -- --standard=PSR12 src bin

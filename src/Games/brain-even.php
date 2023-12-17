@@ -1,40 +1,31 @@
 <?php
 
-require_once './src/Engine.php';
+namespace BrainGames\game;
 
-use function BrainGames\engine\verbose;
-use function BrainGames\engine\askQuestion;
-use function BrainGames\engine\getUserAnswer;
-use function BrainGames\engine\wrongAnswer;
+use function BrainGames\cli\askQuestion;
 
-function isCorrectedAnswer(string $useranswer): bool
+function startMessage(): string
 {
-    $corranswers = ['yes', 'no'];
-    return in_array($useranswer, $corranswers);
+    return 'Answer "yes" if the number is even, otherwise answer "no".';
+}
+
+function generateProblem(): array
+{
+    $num = rand(0, 99);
+
+    askQuestion("$num");
+
+    return [$num];
 }
 
 function getCorrectAnswer(int $num): string
 {
-    if ($num % 2 == 0) return 'yes';
-    else return 'no';
+    return ($num % 2 == 0) ? 'yes' : 'no';
 }
 
-verbose('Answer "yes" if the number is even, otherwise answer "no".');
-
-for ($i = 0; $i < 3; $i++) {
-    $num = rand(0, 99);
-
-    askQuestion("{$num}");
-
-    $useranswer = getUserAnswer();
-    $correctanswer = getCorrectAnswer($num);
-
-    if ((!isCorrectedAnswer($useranswer)) || ($useranswer != $correctanswer)) {
-        wrongAnswer($useranswer, $correctanswer, $name, $endmsg);
-        break;
-    }
-
-    verbose("Correct!");
+function checkProblem($useranswer, $correctanswer): bool
+{
+    return ($useranswer == $correctanswer);
 }
 
-verbose($endmsg);
+require_once './src/Engine.php';

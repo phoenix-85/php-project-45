@@ -1,11 +1,22 @@
 <?php
 
-require_once './src/Engine.php';
+namespace BrainGames\game;
 
-use function BrainGames\engine\verbose;
-use function BrainGames\engine\askQuestion;
-use function BrainGames\engine\getUserAnswer;
-use function BrainGames\engine\wrongAnswer;
+use function BrainGames\cli\askQuestion;
+
+function startMessage(): string
+{
+    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
+}
+
+function generateProblem(): array
+{
+    $num = rand(0, 99);
+
+    askQuestion("$num");
+
+    return [$num];
+}
 
 function getCorrectAnswer(int $num): string
 {
@@ -15,22 +26,9 @@ function getCorrectAnswer(int $num): string
     return 'yes';
 }
 
-verbose('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-for ($i = 0; $i < 3; $i++) {
-    $num = rand(0, 99);
-
-    askQuestion("{$num}");                              //Выводим задание для пользователя
-
-    $useranswer = getUserAnswer();                      //Получаем ответ пользователя
-    $correctanswer = getCorrectAnswer($num);            //Получаем правильный ответ
-
-    if ($useranswer != $correctanswer) {
-        wrongAnswer($useranswer, $correctanswer, $name, $endmsg);
-        break;
-    }
-
-    verbose("Correct!");
+function checkProblem($useranswer, $correctanswer): bool
+{
+    return ($useranswer == $correctanswer);
 }
 
-verbose($endmsg);
+require_once './src/Engine.php';

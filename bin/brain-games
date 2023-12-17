@@ -10,3 +10,6 @@ if (file_exists($autoloadPath1)) {
 }
 
 require_once 'src/Cli.php';
+
+\BrainGames\cli\greetings();
+\BrainGames\cli\getName();

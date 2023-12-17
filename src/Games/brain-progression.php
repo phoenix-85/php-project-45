@@ -1,15 +1,16 @@
 <?php
 
-require_once './src/Engine.php';
+namespace BrainGames\game;
 
-use function BrainGames\engine\verbose;
-use function BrainGames\engine\askQuestion;
-use function BrainGames\engine\getUserAnswer;
-use function BrainGames\engine\wrongAnswer;
+use function BrainGames\cli\askQuestion;
 
-verbose('What number is missing in the progression?');
+function startMessage(): string
+{
+    return 'What number is missing in the progression?';
+}
 
-for ($i = 0; $i < 3; $i++) {
+function generateProblem(): array
+{
     $startnum = rand(0, 99);
     $iteration = rand(1, 10);
     $lengthprog = rand(5, 10);
@@ -22,18 +23,19 @@ for ($i = 0; $i < 3; $i++) {
         ($position == $j) ? $progression_string .= " .." : $progression_string .= " {$progression[$j]}";
     }
 
-    askQuestion("{$progression_string}");                       //Выводим задание для пользователя
+    askQuestion("$progression_string");   ;
 
-    $useranswer = getUserAnswer();                              //Получаем ответ пользователя
-    $useranswertoint = (int) $useranswer;                       //Приводим ответ к целому
-    $correctanswer = $progression[$position];                   //Получаем правильный ответ
-
-    if ($useranswertoint != $correctanswer) {
-        wrongAnswer($useranswer, $correctanswer, $name, $endmsg);
-        break;
-    }
-
-    verbose("Correct!");
+    return [$progression, $position];
 }
 
-verbose($endmsg);
+function getCorrectAnswer(array $progression, int $position): string
+{
+    return $progression[$position];
+}
+
+function checkProblem($useranswer, $correctanswer): bool
+{
+    return ((int) $useranswer == $correctanswer);
+}
+
+require_once './src/Engine.php';

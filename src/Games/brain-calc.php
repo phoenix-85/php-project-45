@@ -1,47 +1,39 @@
 <?php
 
-require_once './src/Engine.php';
+namespace BrainGames\game;
 
-use function BrainGames\engine\verbose;
-use function BrainGames\engine\askQuestion;
-use function BrainGames\engine\getUserAnswer;
-use function BrainGames\engine\wrongAnswer;
+use function BrainGames\cli\askQuestion;
+
+const ACTIONS = ['+', '-', '*'];
+
+function startMessage(): string
+{
+    return 'What is the result of the expression?';
+}
+
+function generateProblem(): array
+{
+    $num1 = rand(0, 99);
+    $num2 = rand(0, 99);
+    $action = ACTIONS[array_rand(ACTIONS)];
+
+    askQuestion("$num1 $action $num2");
+
+    return [$num1, $num2, $action];
+}
 
 function getCorrectAnswer(int $num1, int $num2, string $action): int
 {
-    switch ($action) {
-        case '+':
-            return $num1 + $num2;
-            break;
-        case '-':
-            return $num1 - $num2;
-            break;
-        case '*':
-            return $num1 * $num2;
-    }
+    return match ($action) {
+        '+' => $num1 + $num2,
+        '-' => $num1 - $num2,
+        '*' => $num1 * $num2
+    };
 }
 
-$actions = ['+', '-', '*'];
-
-verbose('What is the result of the expression?');
-
-for ($i = 0; $i < 3; $i++) {
-    $num1 = rand(0, 99);
-    $num2 = rand(0, 99);
-    $action = $actions[array_rand($actions)];
-
-    askQuestion("{$num1} {$action} {$num2}");                   //Выводим задание для пользователя
-
-    $useranswer = getUserAnswer();                              //Получаем ответ пользователя
-    $useranswertoint = (int) $useranswer;                       //Приводим ответ к целому
-    $correctanswer = getCorrectAnswer($num1, $num2, $action);   //Получаем правильный ответ
-
-    if ($useranswertoint != $correctanswer) {
-        wrongAnswer($useranswer, $correctanswer, $name, $endmsg);
-        break;
-    }
-
-    verbose("Correct!");
+function checkProblem($useranswer, $correctanswer): bool
+{
+    return ((int)$useranswer == $correctanswer);
 }
 
-verbose($endmsg);
+require_once './src/Engine.php';
