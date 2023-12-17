@@ -35,8 +35,9 @@ function getDivisors(int $num): array
 {
     $arr = [1];
     for ($i = 2; $i < $num / 2; $i++) {
-        if ($num % $i == 0)
+        if ($num % $i == 0) {
             $arr[] = $i;
+        }
     }
     $arr[] = $num;
     return $arr;

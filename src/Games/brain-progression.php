@@ -23,7 +23,7 @@ function generateProblem(): array
         ($position == $j) ? $progression_string .= " .." : $progression_string .= " {$progression[$j]}";
     }
 
-    askQuestion("$progression_string");   ;
+    askQuestion("$progression_string");
 
     return [$progression, $position];
 }

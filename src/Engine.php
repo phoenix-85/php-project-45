@@ -16,7 +16,11 @@ use function BrainGames\game\startMessage;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($autoloadPath1)) require_once $autoloadPath1; else require_once $autoloadPath2;
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
 
 //-----------START GAME------------
 greetings();
@@ -29,9 +33,9 @@ for ($i = 0; $i < 3; $i++) {
     $problem = generateProblem();
     $useranswer = getUserAnswer();
     $correctanswer = getCorrectAnswer(...$problem);
-    $isRight = checkProblem($useranswer, $correctanswer);
-    if ($isRight) rightAnswer();
-    else {
+    if (checkProblem($useranswer, $correctanswer)) {
+        rightAnswer();
+    } else {
         wrongAnswer($useranswer, $correctanswer);
         $isWin = false;
         break;

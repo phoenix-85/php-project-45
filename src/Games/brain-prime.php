@@ -21,7 +21,9 @@ function generateProblem(): array
 function getCorrectAnswer(int $num): string
 {
     for ($i = 2; $i <= sqrt($num); $i++) {
-        if ($num % $i == 0) return 'no';
+        if ($num % $i == 0) {
+            return 'no';
+        }
     }
     return 'yes';
 }
