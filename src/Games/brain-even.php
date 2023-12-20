@@ -3,6 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
+
 const START_MESSAGE = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function generateProblem(): array

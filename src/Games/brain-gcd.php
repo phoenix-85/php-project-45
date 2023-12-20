@@ -3,6 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
+
 const START_MESSAGE = 'Find the greatest common divisor of given numbers.';
 
 function generateProblem(): array

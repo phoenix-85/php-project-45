@@ -3,6 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
+
 const START_MESSAGE = 'What number is missing in the progression?';
 
 function generateProblem(): array

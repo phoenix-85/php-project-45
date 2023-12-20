@@ -10,6 +10,7 @@ use function BrainGames\cli\welcome;
 use function BrainGames\cli\wrongAnswer;
 use function BrainGames\game\getCorrectAnswer;
 use function BrainGames\game\generateProblem;
+
 use const BrainGames\game\START_MESSAGE;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';

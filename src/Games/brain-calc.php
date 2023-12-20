@@ -3,6 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
+
 const START_MESSAGE = 'What is the result of the expression?';
 const ACTIONS = ['+', '-', '*'];
 

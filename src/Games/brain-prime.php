@@ -3,6 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
+
 const START_MESSAGE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function generateProblem(): array
