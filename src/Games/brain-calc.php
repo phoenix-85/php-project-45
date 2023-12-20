@@ -23,7 +23,8 @@ function getCorrectAnswer(int $num1, int $num2, string $action): string
     return match ($action) {
         "+" => $num1 + $num2,
         "-" => $num1 - $num2,
-        "*" => $num1 * $num2
+        "*" => $num1 * $num2,
+        default => ""
     };
 }
 
