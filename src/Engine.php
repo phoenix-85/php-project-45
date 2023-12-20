@@ -8,6 +8,7 @@ use function BrainGames\cli\getUserAnswer;
 use function BrainGames\cli\greetings;
 use function BrainGames\cli\rightAnswer;
 use function BrainGames\cli\verbose;
+use function BrainGames\cli\welcome;
 use function BrainGames\cli\wrongAnswer;
 use function BrainGames\game\getCorrectAnswer;
 use function BrainGames\game\checkProblem;
@@ -23,8 +24,7 @@ if (file_exists($autoloadPath1)) {
 }
 
 //-----------START GAME------------
-greetings();
-$name = getName();
+$name = welcome();
 verbose(startMessage());
 //-------------ROUNDS--------------
 $isWin = true;

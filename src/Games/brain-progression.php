@@ -38,4 +38,4 @@ function checkProblem($useranswer, $correctanswer): bool
     return ((int) $useranswer == $correctanswer);
 }
 
-require_once './src/Engine.php';
+require_once __DIR__ . '/../Engine.php';

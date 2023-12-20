@@ -33,4 +33,4 @@ function checkProblem($useranswer, $correctanswer): bool
     return ($useranswer == $correctanswer);
 }
 
-require_once './src/Engine.php';
+require_once __DIR__ . '/../Engine.php';

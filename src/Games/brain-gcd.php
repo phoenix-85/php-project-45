@@ -43,4 +43,4 @@ function getDivisors(int $num): array
     return $arr;
 }
 
-require_once './src/Engine.php';
+require_once __DIR__ . '/../Engine.php';

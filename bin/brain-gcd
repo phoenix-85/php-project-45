@@ -1,4 +1,5 @@
 #!/usr/bin/env php
 <?php
 
-require_once 'src/Games/brain-gcd.php';
+require_once __DIR__ . '/../src/Games/brain-gcd.php';
+
