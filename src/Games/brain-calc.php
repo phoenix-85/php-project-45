@@ -3,18 +3,13 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
-
+const START_MESSAGE = 'What is the result of the expression?';
 const ACTIONS = ['+', '-', '*'];
-
-function startMessage(): string
-{
-    return 'What is the result of the expression?';
-}
 
 function generateProblem(): array
 {
-    $num1 = rand(0, 99);
-    $num2 = rand(0, 99);
+    $num1 = rand(1, 99);
+    $num2 = rand(1, 99);
     $action = ACTIONS[array_rand(ACTIONS)];
 
     askQuestion("$num1 $action $num2");
@@ -22,18 +17,13 @@ function generateProblem(): array
     return [$num1, $num2, $action];
 }
 
-function getCorrectAnswer(int $num1, int $num2, string $action): int
+function getCorrectAnswer(int $num1, int $num2, string $action): string
 {
     return match ($action) {
         '+' => $num1 + $num2,
         '-' => $num1 - $num2,
         '*' => $num1 * $num2
     };
-}
-
-function checkProblem($useranswer, $correctanswer): bool
-{
-    return ((int)$useranswer == $correctanswer);
 }
 
 require_once __DIR__ . '/../Engine.php';

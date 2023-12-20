@@ -3,11 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
-
-function startMessage(): string
-{
-    return 'What number is missing in the progression?';
-}
+const START_MESSAGE = 'What number is missing in the progression?';
 
 function generateProblem(): array
 {
@@ -31,11 +27,6 @@ function generateProblem(): array
 function getCorrectAnswer(array $progression, int $position): string
 {
     return $progression[$position];
-}
-
-function checkProblem($useranswer, $correctanswer): bool
-{
-    return ((int) $useranswer == $correctanswer);
 }
 
 require_once __DIR__ . '/../Engine.php';

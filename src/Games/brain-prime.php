@@ -3,11 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
-
-function startMessage(): string
-{
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
-}
+const START_MESSAGE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function generateProblem(): array
 {
@@ -26,11 +22,6 @@ function getCorrectAnswer(int $num): string
         }
     }
     return 'yes';
-}
-
-function checkProblem($useranswer, $correctanswer): bool
-{
-    return ($useranswer == $correctanswer);
 }
 
 require_once __DIR__ . '/../Engine.php';

@@ -3,11 +3,7 @@
 namespace BrainGames\game;
 
 use function BrainGames\cli\askQuestion;
-
-function startMessage(): string
-{
-    return 'Answer "yes" if the number is even, otherwise answer "no".';
-}
+const START_MESSAGE = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function generateProblem(): array
 {
@@ -21,11 +17,6 @@ function generateProblem(): array
 function getCorrectAnswer(int $num): string
 {
     return ($num % 2 == 0) ? 'yes' : 'no';
-}
-
-function checkProblem($useranswer, $correctanswer): bool
-{
-    return ($useranswer == $correctanswer);
 }
 
 require_once __DIR__ . '/../Engine.php';

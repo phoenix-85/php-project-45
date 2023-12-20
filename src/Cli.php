@@ -13,12 +13,12 @@ function welcome(): string
     return $name;
 }
 
-function verbose(string $str): void
+function getStartMessage(string $str): void
 {
     line($str);
 }
 
-function askQuestion(string $str)
+function askQuestion(string $str): void
 {
     line("Question: {$str}");
 }
@@ -33,12 +33,12 @@ function rightAnswer(): void
     line('Correct!');
 }
 
-function wrongAnswer($useranswer, $correctanswer): void
+function wrongAnswer(string $useranswer, string $correctanswer): void
 {
     line("'{$useranswer}' is wrong answer ;(. Correct answer was '{$correctanswer}'.");
 }
 
-function getEndMessage(bool $isWin, $name): void
+function getEndMessage(bool $isWin, string $name): void
 {
     line(($isWin) ? "Congratulations, {$name}!" : "Let's try again, {$name}!");
 }
