@@ -11,8 +11,8 @@ function startMessage(): string
 
 function generateProblem(): array
 {
-    $num1 = rand(0, 99);
-    $num2 = rand(0, 99);
+    $num1 = rand(1, 99);
+    $num2 = rand(1, 99);
 
     askQuestion("$num1 $num2");
 
