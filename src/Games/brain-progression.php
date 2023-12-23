@@ -1,10 +1,16 @@
 <?php
 
-namespace BrainGames\game;
+namespace BrainGames\Games\Brain\Progression;
 
-use function BrainGames\cli\askQuestion;
+use function BrainGames\Cli\askQuestion;
+use function BrainGames\Engine\startGame;
 
-const START_MESSAGE = 'What number is missing in the progression?';
+function run(): void
+{
+    $startMessage = 'What number is missing in the progression?';
+    $pathToFunction = '\BrainGames\Games\Brain\Progression\\';
+    startGame($startMessage, $pathToFunction);
+}
 
 function generateProblem(): array
 {
@@ -13,11 +19,11 @@ function generateProblem(): array
     $lengthprog = rand(5, 10);
     $position = rand(0, $lengthprog - 1);
     $progression = [$startnum];
-    ($position == 0) ? $progression_string = ".." : $progression_string = "{$progression[0]}";
+    ($position == 0) ? $progression_string = ".." : $progression_string = "$progression[0]";
 
     for ($j = 1; $j < $lengthprog; $j++) {
         $progression[] = $progression[$j - 1] + $iteration;
-        ($position == $j) ? $progression_string .= " .." : $progression_string .= " {$progression[$j]}";
+        ($position == $j) ? $progression_string .= " .." : $progression_string .= " $progression[$j]";
     }
 
     askQuestion("$progression_string");
@@ -29,5 +35,3 @@ function getCorrectAnswer(array $progression, int $position): string
 {
     return $progression[$position];
 }
-
-require_once __DIR__ . '/../Engine.php';

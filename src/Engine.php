@@ -1,43 +1,24 @@
 <?php
 
-namespace BrainGames\engine;
+namespace BrainGames\Engine;
 
-use function BrainGames\cli\getEndMessage;
-use function BrainGames\cli\getStartMessage;
-use function BrainGames\cli\getUserAnswer;
-use function BrainGames\cli\rightAnswer;
-use function BrainGames\cli\welcome;
-use function BrainGames\cli\wrongAnswer;
-use function BrainGames\game\getCorrectAnswer;
-use function BrainGames\game\generateProblem;
+use function BrainGames\Cli\{welcomeUser, getStartMessage, getEndMessage, getUserAnswer, checkAnswer};
 
-use const BrainGames\game\START_MESSAGE;
-
-$autoloadPath1 = __DIR__ . '/../../../autoload.php';
-$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($autoloadPath1)) {
-    require_once $autoloadPath1;
-} else {
-    require_once $autoloadPath2;
-}
-
+function startGame(string $startMessage, string $pathToFunction): void
+{
 //-----------START GAME------------
-$name = welcome();
-getStartMessage(START_MESSAGE);
+    $name = welcomeUser();
+    getStartMessage($startMessage);
 //-------------ROUNDS--------------
-$isWin = true;
-
-for ($i = 0; $i < 3; $i++) {
-    $problem = generateProblem();
-    $useranswer = getUserAnswer();
-    $correctanswer = getCorrectAnswer(...$problem);
-    if ($useranswer == $correctanswer) {
-        rightAnswer();
-    } else {
-        wrongAnswer($useranswer, $correctanswer);
-        $isWin = false;
-        break;
+    for ($i = 0; $i < 3; $i++) {
+        $problem = call_user_func($pathToFunction . 'generateProblem');
+        $userAnswer = getUserAnswer();
+        $correctAnswer = call_user_func($pathToFunction . 'getCorrectAnswer', ...$problem);
+        $isLose = checkAnswer($userAnswer, $correctAnswer);
+        if ($isLose) {
+            break;
+        }
     }
-}
 //-------------END GAME------------
-getEndMessage($isWin, $name);
+    getEndMessage($isLose, $name);
+}

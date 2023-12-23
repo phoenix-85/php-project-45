@@ -1,17 +1,23 @@
 <?php
 
-namespace BrainGames\game;
+namespace BrainGames\Games\Brain\Calc;
 
-use function BrainGames\cli\askQuestion;
+use function BrainGames\Cli\askQuestion;
+use function BrainGames\Engine\startGame;
 
-const START_MESSAGE = 'What is the result of the expression?';
-const ACTIONS = ['+', '-', '*'];
+function run(): void
+{
+    $startMessage = 'What is the result of the expression?';
+    $pathToFunction = '\BrainGames\Games\Brain\Calc\\';
+    startGame($startMessage, $pathToFunction);
+}
 
 function generateProblem(): array
 {
+    $actions = ['+', '-', '*'];
     $num1 = rand(1, 99);
     $num2 = rand(1, 99);
-    $action = ACTIONS[array_rand(ACTIONS)];
+    $action = $actions[array_rand($actions)];
 
     askQuestion("$num1 $action $num2");
 
@@ -27,5 +33,3 @@ function getCorrectAnswer(int $num1, int $num2, string $action): string
         default => ""
     };
 }
-
-require_once __DIR__ . '/../Engine.php';

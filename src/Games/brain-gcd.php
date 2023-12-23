@@ -1,10 +1,16 @@
 <?php
 
-namespace BrainGames\game;
+namespace BrainGames\Games\Brain\Gcd;
 
-use function BrainGames\cli\askQuestion;
+use function BrainGames\Cli\askQuestion;
+use function BrainGames\Engine\startGame;
 
-const START_MESSAGE = 'Find the greatest common divisor of given numbers.';
+function run(): void
+{
+    $startMessage = 'Find the greatest common divisor of given numbers.';
+    $pathToFunction = '\BrainGames\Games\Brain\Gcd\\';
+    startGame($startMessage, $pathToFunction);
+}
 
 function generateProblem(): array
 {
@@ -34,5 +40,3 @@ function getDivisors(int $num): array
     $arr[] = $num;
     return $arr;
 }
-
-require_once __DIR__ . '/../Engine.php';

@@ -1,11 +1,11 @@
 <?php
 
-namespace BrainGames\cli;
+namespace BrainGames\Cli;
 
 use function cli\line;
 use function cli\prompt;
 
-function welcome(): string
+function welcomeUser(): string
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
@@ -20,7 +20,7 @@ function getStartMessage(string $str): void
 
 function askQuestion(string $str): void
 {
-    line("Question: {$str}");
+    line("Question: $str");
 }
 
 function getUserAnswer(): string
@@ -28,17 +28,14 @@ function getUserAnswer(): string
     return prompt('Your answer');
 }
 
-function rightAnswer(): void
+function checkAnswer(string $userAnswer, string $correctAnswer): bool
 {
-    line('Correct!');
+    $isCorrectAnswer = ($userAnswer == $correctAnswer);
+    $isCorrectAnswer ? line('Correct!') : line("$userAnswer is wrong answer ;(. Correct answer was $correctAnswer.");
+    return !$isCorrectAnswer;
 }
 
-function wrongAnswer(string $useranswer, string $correctanswer): void
+function getEndMessage(bool $isLose, string $name): void
 {
-    line("'{$useranswer}' is wrong answer ;(. Correct answer was '{$correctanswer}'.");
-}
-
-function getEndMessage(bool $isWin, string $name): void
-{
-    line(($isWin) ? "Congratulations, {$name}!" : "Let's try again, {$name}!");
+    line(($isLose) ? "Let's try again, $name!" : "Congratulations, $name!");
 }

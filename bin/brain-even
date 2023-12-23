@@ -1,4 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../src/Games/brain-even.php';
+use function BrainGames\Games\Brain\Even\run;
+
+require_once __DIR__ . '/../src/autoload.php';
+
+run();
