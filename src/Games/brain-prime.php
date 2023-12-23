@@ -8,7 +8,7 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $pathToFunction = '\BrainGames\Games\Brain\Prime\\';
+    $pathToFunction = __NAMESPACE__;
     startGame($startMessage, $pathToFunction);
 }
 

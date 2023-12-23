@@ -8,7 +8,7 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'Answer "yes" if the number is even, otherwise answer "no".';
-    $pathToFunction = '\BrainGames\Games\Brain\Even\\';
+    $pathToFunction = __NAMESPACE__;
     startGame($startMessage, $pathToFunction);
 }
 function generateProblem(): array

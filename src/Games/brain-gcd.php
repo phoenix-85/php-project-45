@@ -8,7 +8,7 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'Find the greatest common divisor of given numbers.';
-    $pathToFunction = '\BrainGames\Games\Brain\Gcd\\';
+    $pathToFunction = __NAMESPACE__;
     startGame($startMessage, $pathToFunction);
 }
 

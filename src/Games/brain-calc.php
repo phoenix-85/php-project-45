@@ -8,7 +8,7 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'What is the result of the expression?';
-    $pathToFunction = '\BrainGames\Games\Brain\Calc\\';
+    $pathToFunction = __NAMESPACE__;
     startGame($startMessage, $pathToFunction);
 }
 

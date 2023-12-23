@@ -8,7 +8,7 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'What number is missing in the progression?';
-    $pathToFunction = '\BrainGames\Games\Brain\Progression\\';
+    $pathToFunction = __NAMESPACE__;
     startGame($startMessage, $pathToFunction);
 }
 
