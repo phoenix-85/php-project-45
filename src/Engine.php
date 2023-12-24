@@ -4,7 +4,7 @@ namespace BrainGames\Engine;
 
 use function BrainGames\Cli\{welcomeUser, getStartMessage, getEndMessage, getUserAnswer, checkAnswer};
 
-function startGame(string $startMessage, string $generateProblem, string $getCorrectAnswer): void
+function startGame(string $startMessage, callable $generateProblem, callable $getCorrectAnswer): void
 {
 //-----------START GAME------------
     $name = welcomeUser();
