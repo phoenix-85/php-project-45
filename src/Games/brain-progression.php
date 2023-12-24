@@ -8,8 +8,9 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'What number is missing in the progression?';
-    $pathToFunction = __NAMESPACE__;
-    startGame($startMessage, $pathToFunction);
+    $generateProblem = __NAMESPACE__ . '\\generateProblem';
+    $getCorrectAnswer = __NAMESPACE__ . '\\getCorrectAnswer';
+    startGame($startMessage, $generateProblem, $getCorrectAnswer);
 }
 
 function generateProblem(): array

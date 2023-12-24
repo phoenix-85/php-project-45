@@ -8,8 +8,9 @@ use function BrainGames\Engine\startGame;
 function run(): void
 {
     $startMessage = 'What is the result of the expression?';
-    $pathToFunction = __NAMESPACE__;
-    startGame($startMessage, $pathToFunction);
+    $generateProblem = __NAMESPACE__ . '\\generateProblem';
+    $getCorrectAnswer = __NAMESPACE__ . '\\getCorrectAnswer';
+    startGame($startMessage, $generateProblem, $getCorrectAnswer);
 }
 
 function generateProblem(): array
