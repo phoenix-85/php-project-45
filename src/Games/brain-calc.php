@@ -1,8 +1,8 @@
 <?php
 
-namespace BrainGames\Games\Brain\Calc;
+namespace BrainGames\Games\BrainCalc;
 
-use function BrainGames\Cli\askQuestion;
+use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -20,7 +20,7 @@ function generateProblem(): array
     $num2 = rand(1, 99);
     $action = $actions[array_rand($actions)];
 
-    askQuestion("$num1 $action $num2");
+    line("Question: $num1 $action $num2");
 
     return [$num1, $num2, $action];
 }
@@ -31,6 +31,6 @@ function getCorrectAnswer(int $num1, int $num2, string $action): string
         "+" => $num1 + $num2,
         "-" => $num1 - $num2,
         "*" => $num1 * $num2,
-        default => ""
+        default => throw new \Exception('Ошибка!')
     };
 }

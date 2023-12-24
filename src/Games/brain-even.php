@@ -1,8 +1,8 @@
 <?php
 
-namespace BrainGames\Games\Brain\Even;
+namespace BrainGames\Games\BrainEven;
 
-use function BrainGames\Cli\askQuestion;
+use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -15,7 +15,7 @@ function run(): void
 function generateProblem(): array
 {
     $num = rand(1, 99);
-    askQuestion("$num");
+    line("Question: $num");
     return [$num];
 }
 

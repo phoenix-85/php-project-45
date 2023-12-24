@@ -1,8 +1,8 @@
 <?php
 
-namespace BrainGames\Games\Brain\Gcd;
+namespace BrainGames\Games\BrainGcd;
 
-use function BrainGames\Cli\askQuestion;
+use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -18,7 +18,7 @@ function generateProblem(): array
     $num1 = rand(1, 99);
     $num2 = rand(1, 99);
 
-    askQuestion("$num1 $num2");
+    line("Question: $num1 $num2");
 
     return [$num1, $num2];
 }

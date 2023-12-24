@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use function BrainGames\Games\Brain\Even\run;
+use function BrainGames\Games\BrainEven\run;
 
 require_once __DIR__ . '/../src/Autoload.php';
 

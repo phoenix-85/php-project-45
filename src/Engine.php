@@ -2,24 +2,26 @@
 
 namespace BrainGames\Engine;
 
-use function BrainGames\Cli\{welcomeUser, getStartMessage, getEndMessage, getUserAnswer, checkAnswer};
+use function BrainGames\Cli\{welcomeUser, checkAnswer};
+use function cli\{line, prompt};
 
 function startGame(string $startMessage, callable $generateProblem, callable $getCorrectAnswer): void
 {
 //-----------START GAME------------
     $name = welcomeUser();
-    getStartMessage($startMessage);
+    line($startMessage);
 //-------------ROUNDS--------------
     $isLose = true;
-    for ($i = 0; $i < 3; $i++) {
+    $rounds = 3;
+    for ($i = 0; $i < $rounds; $i++) {
         $problem = call_user_func($generateProblem);
-        $userAnswer = getUserAnswer();
         $correctAnswer = call_user_func($getCorrectAnswer, ...$problem);
-        $isLose = checkAnswer($userAnswer, $correctAnswer);
+        $userAnswer = prompt('Your answer');
+        $isLose = !checkAnswer($userAnswer, $correctAnswer);
         if ($isLose) {
             break;
         }
     }
 //-------------END GAME------------
-    getEndMessage($isLose, $name);
+    line(($isLose) ? "Let's try again, $name!" : "Congratulations, $name!");
 }

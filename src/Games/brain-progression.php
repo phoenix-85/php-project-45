@@ -1,8 +1,8 @@
 <?php
 
-namespace BrainGames\Games\Brain\Progression;
+namespace BrainGames\Games\BrainProgression;
 
-use function BrainGames\Cli\askQuestion;
+use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -27,7 +27,7 @@ function generateProblem(): array
         ($position == $j) ? $progression_string .= " .." : $progression_string .= " $progression[$j]";
     }
 
-    askQuestion("$progression_string");
+    line("Question: $progression_string");
 
     return [$progression, $position];
 }

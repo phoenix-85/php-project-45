@@ -1,8 +1,8 @@
 <?php
 
-namespace BrainGames\Games\Brain\Prime;
+namespace BrainGames\Games\BrainPrime;
 
-use function BrainGames\Cli\askQuestion;
+use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -17,13 +17,16 @@ function generateProblem(): array
 {
     $num = rand(0, 99);
 
-    askQuestion("$num");
+    line("Question: $num");
 
     return [$num];
 }
 
 function getCorrectAnswer(int $num): string
 {
+    if (($num == 0) || ($num == 1)) {
+        return  'no';
+    }
     for ($i = 2; $i <= sqrt($num); $i++) {
         if ($num % $i == 0) {
             return 'no';

@@ -2,8 +2,7 @@
 
 namespace BrainGames\Cli;
 
-use function cli\line;
-use function cli\prompt;
+use function cli\{line, prompt};
 
 function welcomeUser(): string
 {
@@ -13,29 +12,9 @@ function welcomeUser(): string
     return $name;
 }
 
-function getStartMessage(string $str): void
-{
-    line($str);
-}
-
-function askQuestion(string $str): void
-{
-    line("Question: $str");
-}
-
-function getUserAnswer(): string
-{
-    return prompt('Your answer');
-}
-
 function checkAnswer(string $userAnswer, string $correctAnswer): bool
 {
     $isCorrectAnswer = ($userAnswer == $correctAnswer);
     $isCorrectAnswer ? line('Correct!') : line("$userAnswer is wrong answer ;(. Correct answer was $correctAnswer.");
-    return !$isCorrectAnswer;
-}
-
-function getEndMessage(bool $isLose, string $name): void
-{
-    line(($isLose) ? "Let's try again, $name!" : "Congratulations, $name!");
+    return $isCorrectAnswer;
 }
