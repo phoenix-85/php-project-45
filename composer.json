@@ -16,7 +16,7 @@
             "src/Games/brain-progression.php"
         ]
     },
-    "bin":[
+    "bin": [
         "bin/brain-games",
         "bin/brain-even",
         "bin/brain-calc",
