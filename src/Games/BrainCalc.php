@@ -20,12 +20,10 @@ function generateProblem(): array
     $num2 = rand(1, 99);
     $action = $actions[array_rand($actions)];
 
-    $question = "$num1 $action $num2";
-
-    return [$question, [$num1, $num2, $action]];
+    return [$num1, $action, $num2];
 }
 
-function getCorrectAnswer(int $num1, int $num2, string $action): string
+function getCorrectAnswer(int $num1, string $action, int $num2): string
 {
     return match ($action) {
         "+" => $num1 + $num2,

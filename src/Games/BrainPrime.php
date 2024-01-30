@@ -16,10 +16,7 @@ function run(): void
 function generateProblem(): array
 {
     $num = rand(0, 99);
-
-    $question = "$num";
-
-    return [$question, [$num]];
+    return [$num];
 }
 
 function getCorrectAnswer(int $num): string

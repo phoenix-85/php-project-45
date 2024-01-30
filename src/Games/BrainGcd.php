@@ -18,9 +18,7 @@ function generateProblem(): array
     $num1 = rand(1, 99);
     $num2 = rand(1, 99);
 
-    $question = "$num1 $num2";
-
-    return [$question, [$num1, $num2]];
+    return [$num1, $num2];
 }
 
 function getCorrectAnswer(int $num1, int $num2): string

@@ -13,8 +13,8 @@ function startGame(string $startMessage, callable $generateProblem, callable $ge
 //-------------ROUNDS--------------
     $rounds = 3;
     for ($i = 0; $i < $rounds; $i++) {
-        [$question, $problem] = call_user_func($generateProblem);
-        line("Question: $question");
+        $problem = call_user_func($generateProblem);
+        line("Question: " . implode(" ", $problem));
         $correctAnswer = call_user_func($getCorrectAnswer, ...$problem);
         $userAnswer = prompt('Your answer');
         $isLose = !checkAnswerAndSayCorrect($userAnswer, $correctAnswer);
