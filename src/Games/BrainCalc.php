@@ -20,9 +20,9 @@ function generateProblem(): array
     $num2 = rand(1, 99);
     $action = $actions[array_rand($actions)];
 
-    line("Question: $num1 $action $num2");
+    $question = "$num1 $action $num2";
 
-    return [$num1, $num2, $action];
+    return [$question, [$num1, $num2, $action]];
 }
 
 function getCorrectAnswer(int $num1, int $num2, string $action): string

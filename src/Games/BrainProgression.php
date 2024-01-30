@@ -2,7 +2,6 @@
 
 namespace BrainGames\Games\BrainProgression;
 
-use function cli\line;
 use function BrainGames\Engine\startGame;
 
 function run(): void
@@ -24,12 +23,12 @@ function generateProblem(): array
 
     for ($j = 1; $j < $lengthprog; $j++) {
         $progression[] = $progression[$j - 1] + $iteration;
-        ($position == $j) ? $progression_string .= " .." : $progression_string .= " $progression[$j]";
+        $progression_string .= ($position == $j) ? " .." : " $progression[$j]";
     }
 
-    line("Question: $progression_string");
+    $question = "$progression_string";
 
-    return [$progression, $position];
+    return [$question, [$progression, $position]];
 }
 
 function getCorrectAnswer(array $progression, int $position): string

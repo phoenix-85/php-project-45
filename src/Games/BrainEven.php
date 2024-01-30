@@ -15,8 +15,8 @@ function run(): void
 function generateProblem(): array
 {
     $num = rand(1, 99);
-    line("Question: $num");
-    return [$num];
+    $question = "$num";
+    return [$question, [$num]];
 }
 
 function getCorrectAnswer(int $num): string

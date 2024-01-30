@@ -12,7 +12,7 @@ function welcomeUser(): string
     return $name;
 }
 
-function checkAnswer(string $userAnswer, string $correctAnswer): bool
+function checkAnswerAndSayCorrect(string $userAnswer, string $correctAnswer): bool
 {
     $isCorrectAnswer = ($userAnswer == $correctAnswer);
     $isCorrectAnswer ? line('Correct!') : line("$userAnswer is wrong answer ;(. Correct answer was $correctAnswer.");
